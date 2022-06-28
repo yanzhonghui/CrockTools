@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'cn.yanzhonghui'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-compress
+    implementation group: 'org.apache.commons', name: 'commons-compress', version: '1.21'
+
+    // https://mvnrepository.com/artifact/org.tukaani/xz
+    implementation group: 'org.tukaani', name: 'xz', version: '1.9'
+
+    // https://mvnrepository.com/artifact/net.sf.sevenzipjbinding/sevenzipjbinding
+    implementation group: 'net.sf.sevenzipjbinding', name: 'sevenzipjbinding', version: '16.02-2.01'
+
+    // https://mvnrepository.com/artifact/net.sf.sevenzipjbinding/sevenzipjbinding-all-platforms
+    implementation group: 'net.sf.sevenzipjbinding', name: 'sevenzipjbinding-all-platforms', version: '16.02-2.01'
+
+}
+
+test {
+    useJUnitPlatform()
+}

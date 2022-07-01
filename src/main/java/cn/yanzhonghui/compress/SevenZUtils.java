@@ -14,8 +14,8 @@ public class SevenZUtils {
     /**
      * Compress
      *
-     * @param input  Pathname of the file or directory
-     * @param output Pathname of the archive file
+     * @param input  path of the file or directory
+     * @param output path of the archive file
      */
     public static void compress(String input, String output) throws Exception {
         File file = new File(input);
@@ -30,9 +30,9 @@ public class SevenZUtils {
     /**
      * Compress
      *
-     * @param sevenZOutput SevenZOutputFile
-     * @param file         File need to be compressed
-     * @param name         The file's name
+     * @param sevenZOutput sevenZOutputFile
+     * @param file         file need to be compressed
+     * @param name         the file's name
      */
     private static void compress(SevenZOutputFile sevenZOutput, File file, String name) throws IOException {
         if (name == null) {
@@ -69,10 +69,18 @@ public class SevenZUtils {
     /**
      * Decompress
      *
-     * @param archive   Pathname of the archive file
-     * @param directory Decompression pathname
+     * @param archive   path of the archive file
+     * @param directory decompression path
      */
-    public static void decompress(String archive, String directory) throws IOException {
+    public static void decompress(String archive, String directory) throws Exception {
+        File fileArc = new File(archive);
+        if (!fileArc.exists()) {
+            throw new Exception(fileArc.getPath() + " does not exist!");
+        }
+        File fileDir = new File(directory);
+        if (!fileDir.exists()) {
+            fileDir.mkdirs();
+        }
         SevenZFile sevenZ = new SevenZFile(new File(archive));
         SevenZArchiveEntry entry;
         while ((entry = sevenZ.getNextEntry()) != null) {
